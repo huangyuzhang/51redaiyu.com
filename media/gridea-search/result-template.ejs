@@ -1,0 +1,64 @@
+<% posts.forEach(function(post) { %>
+
+<article class="box is-paddingless is-clipped has-shadow-lift margin-bottom-25 can-scale">
+  <div class="columns post-card is-marginless">
+
+
+      <!-- featured_image -->
+      <% if (themeConfig.showFeatureImage && post.feature) { %>
+        <a class="column is-hidden-mobile is-paddingless" href="<%= post.link %>" alt="<%= post.title %>" title="<%= post.title %>">
+            <div class="featured-image" style="background-image: url('<%= post.feature %>')"></div>    
+        </a>
+        <a class="column is-hidden-tablet" href="<%= post.link %>" alt="<%= post.title %>" title="<%= post.title %>">
+            <div class="featured-image" style="background-image: url('<%= post.feature %>')"></div>    
+        </a>
+    
+        <!-- post info -->
+        <div class="column is-7 is-paddingless">
+        <% } else { %>
+        <div class="column is-12 is-paddingless">
+    <% } %>
+
+
+      <div class="post-info">
+        
+        <!-- meta -->
+        <div class="level is-mobile is-uppercase is-margin-bottom-1">
+          
+          <div class="level-left">
+          <% post.tags.forEach(function(tag,index) { %>
+            
+                <!-- display the first tag as primary tag -->
+                <div class="level-item">
+                    <div class="buttons are-small">
+                        <a href="<%= tag.link %>" class="button is-light has-text-weight-semibold"><%= tag.name %></a>
+                    </div>
+                </div>
+           
+                
+          <% }) %>
+          </div>
+
+          <div class="level-right is-size-7 meta-text date">
+            <%= post.dateFormat %>
+          </div>
+
+        </div>
+
+        <!-- heading & content -->
+        <a href="<%= post.link %>" class="has-text-black">
+          <h1 class="title is-3 is-size-5-mobile is-margin-bottom-1"><%= post.title %></h1>
+        </a>
+
+        <% if (themeConfig.showFeatureImage && post.feature) { %>
+            <p class="is-hidden-mobile" style="margin-bottom:1.5rem;">
+        <% } else { %>
+            <p class="is-size-7-mobile is-margin-bottom-1" style="margin-bottom:1.5rem">
+        <% } %>
+            <%- post.searchedPreview.replace("<p>","").replace("</p>","") %>
+            </p>
+      </div>
+
+  </div>
+</article>
+<% }); %>
