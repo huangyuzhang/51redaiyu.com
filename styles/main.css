@@ -1051,7 +1051,8 @@ h6 a {
 .post-wrap .post-content ul ul li {
   line-height: 1.4em;
 }
-p code {
+p code,
+table code {
   padding: 0.2em 0.4em;
   margin: 0;
   font-size: 80%;
@@ -1213,6 +1214,9 @@ table tr td:last-child {
 .post-content table td {
   padding: 6px 12px;
   border: #dbdbdb 1px solid;
+}
+.post-content table td {
+  white-space: pre-wrap;
 }
 /* table responsive 2019.07.10 */
 @media screen and (max-width: 1279px) {
